@@ -1,0 +1,129 @@
+/* 222831 393e46 fd7014 eeeeee*/
+:root {
+  --primary-color: #d72323;
+  --dark-gray: #393e46;
+  --background: #000000;
+  --light-gray: #f5eded;
+}
+
+body {
+  background-color: var(--background);
+}
+
+.btn-primary {
+  background-color: var(--primary-color) !important;
+  color: var(--light-gray) !important;
+}
+
+.btn-outline-primary {
+  border-color: var(--primary-color) !important;
+  color: var(--light-gray) !important;
+}
+
+nav.navbar {
+  background-color: var(--dark-gray);
+}
+
+.navbar .navbar-nav .nav-item .nav-link:not(.btn):hover {
+  background-color: rgba(255, 255, 255, 0) !important;
+  border-radius: 0.1875rem !important;
+  cursor: pointer !important;
+  color: var(--primary-color) !important;
+}
+
+.nav-link {
+  color: var(--light-gray) !important;
+  font-size: 0.7rem !important;
+  font-weight: 400;
+}
+
+.primary-text {
+  color: var(--primary-color);
+}
+
+.secondary-text {
+  color: var(--light-gray);
+}
+
+.text {
+  color: var(--light-gray);
+}
+
+input {
+  background-color: transparent;
+  border: 1px solid #E3E3E3;
+  border-radius: 30px;
+  height: 1.5rem;
+  line-height: normal;
+  font-size: 0.8571em;
+  -webkit-transition: color 0.3s ease-in-out, border-color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  -moz-transition: color 0.3s ease-in-out, border-color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  -o-transition: color 0.3s ease-in-out, border-color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  -ms-transition: color 0.3s ease-in-out, border-color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  transition: color 0.3s ease-in-out, border-color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border-color: var(--dark-gray) !important;
+  color: #9A9A9A !important;
+	margin: 1rem;
+}
+
+input:focus {
+  background-color: var(--dark-gray) !important;
+  border-color: var(--light-gray) !important;
+  color: white !important;
+  border: 1px solid;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  outline: 0 !important;
+}
+
+label, .helptext, ul{
+	color: var(--light-gray);
+	line-height: 1.5;
+	font-family: "Montserrat", "Helvetica Neue", Arial, sans-serif;
+  font-weight: 100;
+}
+
+ul, .helptext{
+  font-size: 0.7rem;
+}
+
+span::before { content: '\A'; white-space: pre; }
+
+.alert-dark{
+  background-color: var(--dark-gray);
+  color: var(--light-gray);
+}
+
+.card {
+  background-color: var(--background);
+  border-color: var(--dark-gray) !important;
+}
+
+.card-title {
+  font-weight: 400;
+  color: var(--primary-color);
+}
+
+.card-text {
+  text-align: left !important;
+  color: var(--light-gray)
+}
+
+.card-footer, .author {
+  color: var(--light-gray) !important;
+}
+
+footer {
+  background-color: var(--dark-gray);
+}
+
+.footer-icons {
+  color: var(--light-gray);
+  margin: 0 1rem;
+}
+
+.footer-icons:hover {
+  color: var(--primary-color);
+}
