@@ -4,7 +4,7 @@ from .models import Post
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from django.contrib.auth import logout
-
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -24,9 +24,11 @@ def register(request):
         form=UserCreationForm()
     return render(request,'register.html',{'form':form})
 
+@login_required
 def posts(request): 
     posts=Post.objects.all()
-    return render(request,'posts.html', {'posts':posts})
+    user=request.user.username
+    return render(request,'posts.html', {'posts':posts,'user':user})
 
 def logout_view(request):
     logout(request)
