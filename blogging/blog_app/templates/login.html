@@ -56,21 +56,21 @@
         </div>
         <div class="col-md-6 order-sm-2 order-md-1 ml-auto" style="margin-top:5rem;">
           {% if messages %}
-            {% for msg in messages%}
-                <div class="alert alert-dark">
-                    {{ msg }}
-                </div>
-            {% endfor %}
-            {% endif %}
+          {% for msg in messages%}
+          <div class="alert alert-dark">
+            {{ msg }}
+          </div>
+          {% endfor %}
+          {% endif %}
           <h3 class="primary-text">Login</h3>
           <form method="POST">
-              {% csrf_token %}
-              <fieldset class="form-group">
-                  {{ form.as_p }}
-              </fieldset>
-              <div class="form-group">
-                  <button class="btn btn-primary" type="submit">Login</button>
-              </div>
+            {% csrf_token %}
+            <fieldset class="form-group">
+              {{ form.as_p }}
+            </fieldset>
+            <div class="form-group">
+              <button class="btn btn-primary btn-round" type="submit">Login</button>
+            </div>
           </form>
         </div>
       </div>

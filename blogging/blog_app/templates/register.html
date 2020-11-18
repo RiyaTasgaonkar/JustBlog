@@ -55,22 +55,22 @@
           <img src="{% static 'img/register.svg'%}" alt="login-image" style="padding:4rem;">
         </div>
         <div class="col-md-6 order-sm-2 order-md-1 ml-auto">
-            {% if messages %}
-            {% for msg in messages%}
-                <div class="alert alert-dark">
-                    {{ msg }}
-                </div>
-            {% endfor %}
-            {% endif %}
+          {% if messages %}
+          {% for msg in messages%}
+          <div class="alert alert-dark">
+            {{ msg }}
+          </div>
+          {% endfor %}
+          {% endif %}
           <h3 class="primary-text">Register With Us Today!!</h3>
           <form method="POST">
-              {% csrf_token %}
-              <fieldset class="form-group">
-                  {{ form.as_p }}
-              </fieldset>
-              <div class="form-group">
-                  <button class="btn btn-primary" type="submit">Register</button>
-              </div>
+            {% csrf_token %}
+            <fieldset class="form-group">
+              {{ form.as_p }}
+            </fieldset>
+            <div class="form-group">
+              <button class="btn btn-primary btn-round" type="submit">Register</button>
+            </div>
           </form>
         </div>
       </div>

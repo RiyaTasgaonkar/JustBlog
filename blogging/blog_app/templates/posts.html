@@ -38,22 +38,34 @@
       <div class="collapse navbar-collapse justify-content-end" id="navigation" data-nav-image="./assets/img/blurred-image-1.jpg">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" href="#"><p>My Posts</p></a>
+            <a class="nav-link" href="#">
+              <p>My Posts</p>
+            </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#"><p>Upload</p></a>
+            <a class="nav-link" href="#">
+              <p>Upload</p>
+            </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#"><p>Search</p></a>
+            <a class="nav-link" href="#">
+              <p>Search</p>
+            </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#"><p>Sort</p></a>
+            <a class="nav-link" href="#">
+              <p>Sort</p>
+            </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'logout' %}"><p>Logout</p></a>
+            <a class="nav-link" href="{% url 'logout' %}">
+              <p>Logout</p>
+            </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#"><p>{{ user }}</p></a>
+            <a class="nav-link" href="#">
+              <p>{{ user }}</p>
+            </a>
           </li>
         </ul>
       </div>
@@ -65,9 +77,9 @@
     <div class="col-md-9 mx-auto" style="margin-top:150px">
       {% if messages %}
       {% for msg in messages%}
-        <div class="alert alert-dark">
-          {{ msg }}
-        </div>
+      <div class="alert alert-dark">
+        {{ msg }}
+      </div>
       {% endfor %}
       {% endif %}
       {% for post in posts %}
@@ -75,14 +87,14 @@
         <div class="card-body">
           <h4 class="card-title">{{ post.postTitle }}</h4>
           <small class="text-muted author">{{ post.postAuthor }}</small>
-            <p class="card-text">
-              {{ post.postContent }}
-            </p>
-          </div>
+          <p class="card-text">
+            {{ post.postContent }}
+          </p>
+        </div>
         <div class="card-footer text-muted mb-2" style="text-align:left; padding-left:1.5rem;">{{ post.date }}</div>
       </div>
       {% endfor %}
-      </div>
+    </div>
   </div>
 
   <footer>
