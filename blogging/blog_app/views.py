@@ -5,10 +5,12 @@ from .models import Post
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from django.contrib.auth import logout
+from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.views.generic import DetailView, CreateView, UpdateView, DeleteView
 from django.urls import reverse
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from .forms import SearchForm
 
 # Create your views here.
 
@@ -40,6 +42,28 @@ def my_posts(request):
     posts=Post.objects.filter(postAuthor__exact=request.user.id).order_by('-date')
     return render(request,'my_posts.html', {'posts':posts,'user':u})
 
+@login_required
+def search(request):
+    u=request.user.username
+    post_found=False
+    if request.method == "POST":
+        SearchFormInstance = SearchForm(request.POST)  
+        if  SearchFormInstance.is_valid():
+            query =  SearchFormInstance.cleaned_data['query']
+            print(query[0:])
+            user=User.objects.filter(username__iexact=query[0:]).first()
+            print(user)
+            if user:
+                posts=Post.objects.filter(postAuthor__exact=user).order_by('-date')
+                if posts: post_found=True
+                else: post_found=False
+                return render(request,'search.html', {'user':u,'posts':posts,'query':query,'bool':False,'not_found':False,'post_found':post_found})                
+            else:
+                return render(request,'search.html', {'user':u,'bool':True,'not_found':True,'post_found':post_found})
+    else:
+        SearchFormInstance = SearchForm()
+    return render(request,'search.html', {'user':u,'bool':True,'not_found':False,'post_found':post_found})
+    
 @login_required
 def logout_view(request):
     logout(request)

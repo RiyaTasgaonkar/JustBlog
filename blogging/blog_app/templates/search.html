@@ -7,7 +7,7 @@
   <link rel="apple-touch-icon" sizes="76x76" href="{% static 'img/apple-icon.png' %}">
   <link rel="icon" type="image/png" href="{% static 'img/favicon.png' %}">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <title>Blogging-Upload</title>
+  <title>Blogging-{{ user }}</title>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
 
   <!--     Fonts and icons     -->
@@ -18,6 +18,8 @@
   <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" />
   <link href="{% static 'css/master.css' %}" rel="stylesheet" />
   <link href="{% static 'css/now-ui-kit.css' %}" rel="stylesheet" />
+  
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
 
 </head>
@@ -38,12 +40,12 @@
       <div class="collapse navbar-collapse justify-content-end" id="navigation" data-nav-image="./assets/img/blurred-image-1.jpg">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" href="{% uls 'my_posts' %}">
-              <p>My Posts</p>
+            <a class="nav-link" href="{% url 'posts'%}">
+              <p>Posts</p>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% uls 'upload' %}">
+            <a class="nav-link" href="{% url 'upload'%}">
               <p>Upload</p>
             </a>
           </li>
@@ -74,24 +76,42 @@
 
   <!--home-->
   <div class="container">
-    <div class="col-md-11 ml-auto pt-5 pb-1 mt-5">
-      <div class="row">
-        <div class="col-md-4 order-sm-1 order-md-2 ml-auto py-5">
-          <img src="{% static 'img/upload.svg'%}" alt="upload-image" class="px-5" style="margin-top:8rem; height:14rem;">
+    <div class="col-md-9 mx-auto" style="margin-top:150px ;min-height:430px;">
+      <form class="search" action='{% url "search" %}' method="post" class="mx-auto">{% csrf_token %}
+        <div class="input-group text-center">
+        <input class='searchbar transparent' placeholder="Search" id='query' name='query' type='text' required value="{{ query }}" autocomplete="off">
+        <span><button type="submit" name="submit" class="go"><i class="fas fa-search"></i></button>
         </div>
-        <div class="col-md-8 order-sm-2 order-md-1 ml-auto">
-          <h3 class="primary-text">Upload Your Blog</h3>
-          <form method="POST">
-            {% csrf_token %}
-            <fieldset class="form-group">
-              {{ form.as_p }}
-            </fieldset>
-            <div class="form-group">
-              <button class="btn btn-primary btn-round" type="submit">Upload</button>
-            </div>
-          </form>
+    </form>
+    {%if not_found %}
+    <h3 class="primary-text px-3">User {{ query }} does not exist</h3>
+    {% endif %}
+      {% if not bool %}
+      <h3 class="primary-text px-3">Posts by {{ query }}</h3>
+      {% if post_found %}
+      {% for post in posts %}
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title text-center">{{ post.postTitle }}</h4>
+          <p class="card-text show-read-more">
+            {{ post.postContent }}
+          </p>
+          <a href="{% url 'post-details' post.id %}"  style="font-size:1rem;">Read more...</a>
+        </div>
+        <div class="card-footer text-muted mb-2" style="text-align:left; padding-left:1.5rem;">
+          <a href="{% url 'delete' post.id %}" class="btn btn-outline-primary btn-round mr-3">Delete</a>
+          <a href="{% url 'update' post.id %}" class="btn btn-outline-primary btn-round">Update</a><br>
+          {{ post.date }}
         </div>
       </div>
+      {% endfor %}
+      {% else %}
+      <h5 class="secondary-text px-3">No posts have been uploaded by {{ query }}</h5>
+      {% endif%}
+      {% else %}
+      <!-- <h3 class="primary-text">No posts by {{ user }}</h3> -->
+      <img src="{% static 'img/search.svg'%}" style="height: 14rem;" class="rounded mx-auto d-block mt-5 py-2">
+      {% endif %}
     </div>
   </div>
 
@@ -106,6 +126,19 @@
 
 
   <!--   Core JS Files   -->
+  <script>
+  $(document).ready(function(){
+    var maxLength = 300;
+    $(".show-read-more").each(function(){
+      var myStr = $(this).text();
+      if($.trim(myStr).length > maxLength){
+        var newStr = myStr.substring(0, maxLength);
+        var removedStr = myStr.substring(maxLength, $.trim(myStr).length);
+        $(this).empty().html(newStr);
+      }
+    });
+  });
+  </script>
   <script src="{% static 'js/core/jquery.min.js' %}" type="text/javascript"></script>
   <script src="{% static 'js/core/popper.min.js' %}" type="text/javascript"></script>
   <script src="{% static 'js/core/bootstrap.min.js' %}" type="text/javascript"></script>
