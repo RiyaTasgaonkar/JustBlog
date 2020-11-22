@@ -28,7 +28,7 @@
   <nav class="navbar navbar-expand-lg fixed-top navbar-transparent " color-on-scroll="100" style="color: transparent;">
     <div class="container">
       <div class="navbar-translate">
-        <a class="navbar-brand" href="index.html" data-placement="bottom" target="_blank">LoremIpsum</a>
+        <a class="navbar-brand" href="{% url 'home'%}" data-placement="bottom" target="_blank">Just_Blog</a>
         <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-bar top-bar"></span>
           <span class="navbar-toggler-bar middle-bar"></span>
@@ -67,11 +67,10 @@
           </div>
           {% endfor %}
           {% endif %}
-          <h3 class="primary-text">Lorem Ipsum..</h3>
-          <p class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <h3 class="primary-text">Want to start blogging? But not sure where to start, fear not!! </h3>
+          <p class="text">Here we provide you new bloggers an easy approach to step into the blogging world. Start blogging and explore the world.
+            <br>In this blog app , we have provided numerous blog examples for beginners to start blogging.<br><br> 
+            Register to read and write numerous blogs. Do fill out subscription forms to avail timely subscriptions.</p>
           <a class="btn btn-primary btn-round mr-3" href="{% url 'login' %}">Login</a>
           <a class="btn btn-outline-primary btn-round mr-3" href="{% url 'register' %}">Register</a>
         </div>
@@ -80,9 +79,10 @@
   </div>
 
   <footer>
-    <div class="container ml-auto py-2" style="text-align:right">
+    <div style="text-align: center;color: #f96332;"> Made&nbsp;&nbsp;with&nbsp;&nbsp;❤ </div>
+    <div class="container ml-auto py-2" style="text-align:center">
       <i class="footer-icons fab fa-twitter"></i>
-      <i class=" footer-icons fab fa-facebook-f"></i>
+      <i class="footer-icons fab fa-facebook-f"></i>
       <i class="footer-icons fab fa-instagram"></i>
     </div>
   </footer>
