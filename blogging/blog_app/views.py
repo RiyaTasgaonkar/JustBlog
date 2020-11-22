@@ -8,9 +8,10 @@ from django.contrib.auth import logout
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.views.generic import DetailView, CreateView, UpdateView, DeleteView
+from django.views.generic.edit import FormView
 from django.urls import reverse
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from .forms import SearchForm
+from .forms import SearchForm, SubscriptionForm
 
 # Create your views here.
 
@@ -50,9 +51,7 @@ def search(request):
         SearchFormInstance = SearchForm(request.POST)  
         if  SearchFormInstance.is_valid():
             query =  SearchFormInstance.cleaned_data['query']
-            print(query[0:])
             user=User.objects.filter(username__iexact=query[0:]).first()
-            print(user)
             if user:
                 posts=Post.objects.filter(postAuthor__exact=user).order_by('-date')
                 if posts: post_found=True
@@ -63,7 +62,24 @@ def search(request):
     else:
         SearchFormInstance = SearchForm()
     return render(request,'search.html', {'user':u,'bool':True,'not_found':False,'post_found':post_found})
-    
+
+def subscription(request):
+    u=request.user.username
+    if request.method == "POST":
+        f = SubscriptionForm(request.POST) 
+        if f.is_valid():  
+            profile=f.save(commit=False)
+            profile.user = request.user
+            profile.save()
+            messages.success(request,'Thank you for suscribing! You have been added to our mailing list.')
+            return redirect('posts')
+        else:
+            f = SubscriptionForm(request.POST)
+            return render(request, 'subscribe.html', {'form':f,'user':u})
+    else:
+        form = SubscriptionForm(None)   
+        return render(request, 'subscribe.html', {'form':form,'user':u})
+ 
 @login_required
 def logout_view(request):
     logout(request)

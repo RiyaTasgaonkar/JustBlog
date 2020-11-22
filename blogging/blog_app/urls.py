@@ -10,6 +10,7 @@ urlpatterns = [
     path('post/<int:pk>',detail_view.as_view(),name='post-details'),
     path('upload/',upload.as_view(),name='upload'),
     path('search/',views.search,name='search'),
+    path('subscription/',views.subscription,name='subscription'),
     path('post/<int:pk>/update',update.as_view(),name='update'),
     path('post/<int:pk>/delete',delete_view.as_view(),name='delete'),
     path('register/',views.register,name='register'),

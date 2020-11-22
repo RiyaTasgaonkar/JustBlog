@@ -56,7 +56,7 @@ a{
   color: var(--primary-color) !important;
 }
 
-input {
+input, select {
   background-color: transparent;
   border: 1px solid #E3E3E3;
   border-radius: 30px;
@@ -72,10 +72,10 @@ input {
   box-shadow: none;
   border-color: var(--dark-gray) !important;
   color: #9A9A9A !important;
-	margin: 1rem;
+  margin: 1rem;
 }
 
-input:focus {
+input:focus, select:focus {
   background-color: var(--dark-gray) !important;
   border-color: var(--light-gray) !important;
   color: white !important;
@@ -85,7 +85,7 @@ input:focus {
   outline: 0 !important;
 }
 
-label, .helptext, ul{
+label, .helptext, ul, select{
 	color: var(--light-gray);
 	line-height: 1.5;
 	font-family: "Montserrat", "Helvetica Neue", Arial, sans-serif;
