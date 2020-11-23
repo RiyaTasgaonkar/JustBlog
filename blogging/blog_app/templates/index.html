@@ -55,7 +55,7 @@
   <!--home-->
   <div class="container">
     <div class="col-md-11 ml-auto py-5 mt-5 mb-3">
-      <div class="row" style="margin-bottom:0.7rem;">
+      <div class="row" style="margin-bottom:1.6rem;">
         <div class="col-md-6 order-sm-1 order-md-2 ml-auto px-5 py-5">
           <img src="{% static 'img/posts.svg'%}" alt="blog-image" style="height:18rem;">
         </div>
@@ -68,9 +68,8 @@
           {% endfor %}
           {% endif %}
           <h3 class="primary-text">Want to start blogging? But not sure where to start, fear not!! </h3>
-          <p class="text">Here we provide you new bloggers an easy approach to step into the blogging world. Start blogging and explore the world.
-            <br>In this blog app , we have provided numerous blog examples for beginners to start blogging.<br><br> 
-            Register to read and write numerous blogs. Do fill out subscription forms to avail timely subscriptions.</p>
+          <p class="text">Here at <em>JUST_BLOG</em> we provide budding bloggers an easy approach to step into the Blogging World and explore it.
+          <br><br>Do register with us to access our numerous blogs and upload your ones!! Don't forget to  subscribe with us avail our timely and hand-picked newsletters.</p>
           <a class="btn btn-primary btn-round mr-3" href="{% url 'login' %}">Login</a>
           <a class="btn btn-outline-primary btn-round mr-3" href="{% url 'register' %}">Register</a>
         </div>
@@ -78,12 +77,14 @@
     </div>
   </div>
 
-  <footer>
-    <div style="text-align: center;color: #f96332;"> Made&nbsp;&nbsp;with&nbsp;&nbsp;❤ </div>
-    <div class="container ml-auto py-2" style="text-align:center">
+  <footer class="container-fluid">
+    <div class="row">
+      <div class="ml-3 py-2 px-2" style="color: #f5eded"> Made with <i class="fas fa-heart" style="color: #d72323;"></i></div>
+      <div class="ml-auto mr-3 py-2 px-2" >
       <i class="footer-icons fab fa-twitter"></i>
       <i class="footer-icons fab fa-facebook-f"></i>
       <i class="footer-icons fab fa-instagram"></i>
+    </div>
     </div>
   </footer>
 
