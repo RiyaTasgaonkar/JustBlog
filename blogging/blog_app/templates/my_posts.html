@@ -98,7 +98,7 @@
         <div class="card-footer text-muted mb-2" style="text-align:left; padding-left:1.5rem;">
           <a href="{% url 'delete' post.id %}" class="btn btn-outline-primary btn-round mr-3">Delete</a>
           <a href="{% url 'update' post.id %}" class="btn btn-outline-primary btn-round">Update</a><br>
-          {{ post.date }}
+          {{ post.date | date:'d M Y' }}
         </div>
       </div>
       {% endfor %}
@@ -106,7 +106,7 @@
       <h3 class="primary-text">No posts by {{ user }}</h3>
       <img src="{% static 'img/no result.svg'%}" style="height: 14rem;" class="rounded mx-auto d-block px-4 py-4">
       <div class=" col-md-9 text-center  mx-auto py-5">
-        <h5 class="text-secondary">Want to upload new blogs?<em><a href="" style="color:#d72323">Upload</a></em></h5>
+        <h5 class="text-secondary">Want to upload new blogs?<em><a href="{% url 'upload'%}" style="color:#d72323">Upload</a></em></h5>
       </div>
       {% endif %}
     </div>
