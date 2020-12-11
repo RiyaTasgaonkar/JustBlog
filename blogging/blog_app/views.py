@@ -63,6 +63,7 @@ def search(request):
         SearchFormInstance = SearchForm()
     return render(request,'search.html', {'user':u,'bool':True,'not_found':False,'post_found':post_found})
 
+@login_required
 def subscription(request):
     u=request.user.username
     if request.method == "POST":
